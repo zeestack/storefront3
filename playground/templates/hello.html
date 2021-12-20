@@ -1,0 +1,64 @@
+<html>
+  <body>
+    {% if name %}
+
+    <h1>Hello {{name}}, {{age}}</h1>
+    
+    {% else %}
+    <h1>Hello World</h1>
+    {% endif %}
+
+    <h1>Products</h1>
+
+    <ul> 
+      {% for product in products %}
+      <li>{{product.title}}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>Customers</h1>
+
+    <ul> 
+      {% for customer in customers %}
+      <li>{{customer.email}}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>Collections</h1>
+
+    <ul> 
+      {% for collection in collections %}
+      <li>{{collection.featured_product}}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>Orders</h1>
+
+    <ul> 
+      {% for order in orders %}
+      <li>{{order.customer_id}}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>Product Inventory</h1>
+
+    <ul> 
+      {% for product in products_inventory %}
+      <li>{{product.title}}, {{ product.inventory}}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>Order Items</h1>
+
+    <ul> 
+      {% for orderItem in orderItems %}
+      <li>{{orderItem.product_id}}, {{orderItem.unit_price}}</li>
+      {% endfor %}
+    </ul>
+
+
+
+
+
+  </body>
+</html>

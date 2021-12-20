@@ -1,0 +1,19 @@
+<html>
+  <body>
+    {% if name %}
+
+    <h1>{{name}}</h1>
+    
+    {% else %}
+    <h1>Hello World</h1>
+    {% endif %}
+    
+
+    <h1>Orders: {{orders.id__count}}</h1>
+    <h1>Product 1 Sold Quantities: {{units_sold.units_sold}}</h1>
+    <h1>Orders by Customer 1: {{orders_by_customer1}}</h1>
+    <h1>Price Stats for Collection 3: {{price_statistics}}</h1>
+    
+
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": true,
+    },
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/Users/zhussain1/.local/share/virtualenvs/storefront2-hWI9tBsX/bin/python",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.rulers": [88, 120]
+}
+

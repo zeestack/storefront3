@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-debug-toolbar = "*"
+black = "*"
+mysqlclient = "*"
+colorama = "*"
+tzdata = "*"
+markdown = "*"
+django-filter = "*"
+djangorestframework = "==3.12.4"
+six = "*"
+pytz = "*"
+drf-nested-routers = "*"
+isort = "*"
+djoser = "*"
+djangorestframework-simplejwt = "*"
+pillow = "*"
+
+[dev-packages]
+black = "*"
+isort = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
