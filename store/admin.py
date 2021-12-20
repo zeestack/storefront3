@@ -1,6 +1,7 @@
 from django.contrib import admin, messages
 from django.contrib.admin.filters import SimpleListFilter
 from django.contrib.admin.views.main import ChangeList
+from django.contrib.contenttypes.admin import GenericTabularInline
 from django.db import models
 from django.db.models.aggregates import Count
 from django.db.models.expressions import OrderBy
@@ -62,9 +63,21 @@ class InventoryFilter(admin.SimpleListFilter):
             return queryset.filter(inventory__lt=10)
 
 
+class ProductImageInline(admin.TabularInline):
+    model = models.ProductImage
+    readonly_fields = ["thumbnail"]
+
+    def thumbnail(self, instance: models.ProductImage):
+        if not instance.image.url == "":
+            return format_html(
+                f'<a href={instance.image.url}><img src={instance.image.url} class="thumbnail"/></a>'
+            )
+        return ""
+
+
 @admin.register(models.Product)
 class ProdutAdmin(admin.ModelAdmin):
-    #    inlines = [TagInline]
+    inlines = [ProductImageInline]
     actions = ["clear_inventory"]
     list_display = [
         "title",
@@ -79,12 +92,10 @@ class ProdutAdmin(admin.ModelAdmin):
     list_select_related = ["collection"]
     search_fields = ["title"]
     # manipulating forms
-
     # fields = ["title", "slug"]
     # exclude = ["promotions"]
     # readonly_fields = ["title"]
     autocomplete_fields = ["collection"]
-
     prepopulated_fields = {"slug": ["title"]}
 
     def collection_title(self, product):
@@ -102,6 +113,9 @@ class ProdutAdmin(admin.ModelAdmin):
         self.message_user(
             request, f"{updated_count} successfully updated.", messages.ERROR
         )
+
+    class Media:
+        css = {"all": ["store/styles.css"]}
 
 
 @admin.register(models.Customer)

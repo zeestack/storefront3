@@ -11,6 +11,8 @@ from django.db.models.fields import EmailField
 from django.db.models.fields.related import ForeignKey
 from rest_framework import permissions
 
+from store.validators import validate_image_size
+
 # Create your models here.
 
 
@@ -57,7 +59,9 @@ class ProductImage(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name="images"
     )
-    image = models.ImageField(upload_to="store/images")
+    image = models.ImageField(
+        upload_to="store/images", validators=[validate_image_size]
+    )
 
 
 class Customer(models.Model):
