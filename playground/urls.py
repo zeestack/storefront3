@@ -8,5 +8,6 @@ from . import views
 urlpatterns = [
     path("hello/", views.say_hello),
     path("email/", views.send_email),
+    path("notify/", views.notify),
     path("hello/aggregate/", views.aggregate_hello),
 ]

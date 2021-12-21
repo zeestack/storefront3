@@ -7,10 +7,17 @@ from django.shortcuts import render
 from store.models import Collection, Customer, Order, OrderItem, Product
 from templated_mail.mail import BaseEmailMessage
 
+from playground.tasks import notify_customers
+
 # Create your views here.
 
 # request -> response
 # action
+
+
+def notify(request):
+    notify_customers.delay("Hello World!")
+    return HttpResponse(status=200)
 
 
 def send_email(request):
