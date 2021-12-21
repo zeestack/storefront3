@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f874c1bba0db0ae759ac5c4bf71aaa4a43783eb3a1f4822815c7ff7daa442b0f"
+            "sha256": "16f01fef0214209d9a468fae2e998eb3a133aabe4d528fc927794777efe505fe"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -197,6 +197,13 @@
             ],
             "index": "pypi",
             "version": "==21.1"
+        },
+        "django-template-email": {
+            "hashes": [
+                "sha256:9d819fb32146a4d40b4926010a48d42d7058722e243075627c5754df88f5fe79"
+            ],
+            "index": "pypi",
+            "version": "==0.1"
         },
         "django-templated-mail": {
             "hashes": [
@@ -564,7 +571,7 @@
                 "sha256:4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece",
                 "sha256:c4fdf4019605b6e5423637e01bc9fe4daef873709a7973e195ceba0a62bbc844"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_full_version < '4.0.0'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
             "version": "==1.26.7"
         },
         "zipp": {

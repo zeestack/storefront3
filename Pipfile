@@ -21,6 +21,7 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 pillow = "*"
 django-cors-headers = "*"
+django-template-email = "*"
 
 [dev-packages]
 black = "*"

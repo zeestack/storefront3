@@ -1,8 +1,11 @@
-from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import EmailMessage, mail_admins, send_mail
+from django.db.models.aggregates import Avg, Count, Max, Min, Sum
 from django.http import HttpResponse
+from django.http.response import BadHeaderError
+from django.shortcuts import render
 from store.models import Collection, Customer, Order, OrderItem, Product
-from django.db.models.aggregates import Count, Max, Min, Avg, Sum
+from templated_mail.mail import BaseEmailMessage
 
 # Create your views here.
 
@@ -10,18 +13,33 @@ from django.db.models.aggregates import Count, Max, Min, Avg, Sum
 # action
 
 
+def send_email(request):
+    try:
+        temp_email = BaseEmailMessage(
+            template_name="emails/hello.html",
+            context={"name": "Zahid Hussain"},
+        )
+        temp_email.send(["zahid@tf.com"])
+        mail = EmailMessage("subject", "message", "hello@zahid.com", ["info@zahid.com"])
+        mail.attach_file("store/static/store/styles.css")
+        mail.send()
+
+        send_mail(
+            subject="Hello World",
+            message="message",
+            from_email="zahid@info.com",
+            recipient_list=["zahid.ce@gmail.com"],
+        )
+        mail_admins(subject="Issue", message="message", html_message="message")
+    except BadHeaderError:
+        return HttpResponse("Error", status=400)
+    return HttpResponse("Email sent", status=200)
+
+
 def say_hello(request):
-    # return HttpResponse("Hello World")
-    # query_set = Product.objects.all() # query_set is based on lazy evaluation
-    # for product in query_set:
-    #  print(product)
-    # try:
-    #   product = Product.objects.get(pk=1)
-    # except ObjectDoesNotExist:
-    #   pass
+
     exists = Product.objects.filter(pk=1).exists()
     product = Product.objects.filter(pk=1).first()
-    print(product)
 
     # queryset = Product.objects.filter(unit_price__range=(20, 30))
     # queryset = Product.objects.filter(title__startswith="C")
